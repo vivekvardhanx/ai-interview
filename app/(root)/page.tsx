@@ -9,7 +9,6 @@ import {
   getInterviewsByUserId,
   getLatestInterviews,
 } from "@/lib/actions/general.action";
-import { dummyInterviews } from "@/constants";
 
 async function Home() {
   const user = await getCurrentUser();
@@ -49,29 +48,38 @@ async function Home() {
         <h2>Your Interviews</h2>
 
         <div className="interviews-section">
-          {hasPastInterviews
-            ? userInterviews?.map((interview) => (
-                <InterviewCard
-                  key={interview.id}
-                  userId={user?.id}
-                  interviewId={interview.id}
-                  role={interview.role}
-                  type={interview.type}
-                  techstack={interview.techstack}
-                  createdAt={interview.createdAt}
-                />
-              ))
-            : dummyInterviews.map((interview) => (
-                <InterviewCard
-                  key={interview.id}
-                  userId={interview.userId}
-                  interviewId={interview.id}
-                  role={interview.role}
-                  type={interview.type}
-                  techstack={interview.techstack}
-                  createdAt={interview.createdAt}
-                />
-              ))}
+          {hasPastInterviews ? (
+            userInterviews?.map((interview) => (
+              <InterviewCard
+                key={interview.id}
+                userId={user?.id}
+                interviewId={interview.id}
+                role={interview.role}
+                type={interview.type}
+                techstack={interview.techstack}
+                createdAt={interview.createdAt}
+              />
+            ))
+          ) : (
+            <>
+              <InterviewCard
+                userId={user?.id}
+                interviewId={"dummy1"}
+                role={"Frontend Developer"}
+                type={"Technical"}
+                techstack={["React", "TypeScript", "CSS"]}
+                createdAt={Date.now()}
+              />
+              <InterviewCard
+                userId={user?.id}
+                interviewId={"dummy2"}
+                role={"Backend Developer"}
+                type={"Technical"}
+                techstack={["Node.js", "Express", "MongoDB"]}
+                createdAt={Date.now()}
+              />
+            </>
+          )}
         </div>
       </section>
 
@@ -79,29 +87,38 @@ async function Home() {
         <h2>Take Interviews</h2>
 
         <div className="interviews-section">
-          {hasUpcomingInterviews
-            ? allInterview?.map((interview) => (
-                <InterviewCard
-                  key={interview.id}
-                  userId={user?.id}
-                  interviewId={interview.id}
-                  role={interview.role}
-                  type={interview.type}
-                  techstack={interview.techstack}
-                  createdAt={interview.createdAt}
-                />
-              ))
-            : dummyInterviews.map((interview) => (
-                <InterviewCard
-                  key={interview.id}
-                  userId={interview.userId}
-                  interviewId={interview.id}
-                  role={interview.role}
-                  type={interview.type}
-                  techstack={interview.techstack}
-                  createdAt={interview.createdAt}
-                />
-              ))}
+          {hasUpcomingInterviews ? (
+            allInterview?.map((interview) => (
+              <InterviewCard
+                key={interview.id}
+                userId={user?.id}
+                interviewId={interview.id}
+                role={interview.role}
+                type={interview.type}
+                techstack={interview.techstack}
+                createdAt={interview.createdAt}
+              />
+            ))
+          ) : (
+            <>
+              <InterviewCard
+                userId={user?.id}
+                interviewId={"dummy3"}
+                role={"Full Stack Engineer"}
+                type={"Mixed"}
+                techstack={["React", "Node.js", "GraphQL"]}
+                createdAt={Date.now()}
+              />
+              <InterviewCard
+                userId={user?.id}
+                interviewId={"dummy4"}
+                role={"DevOps Engineer"}
+                type={"Behavioral"}
+                techstack={["AWS", "Docker", "Kubernetes"]}
+                createdAt={Date.now()}
+              />
+            </>
+          )}
         </div>
       </section>
     </>
