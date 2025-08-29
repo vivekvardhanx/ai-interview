@@ -61,24 +61,7 @@ async function Home() {
               />
             ))
           ) : (
-            <>
-              <InterviewCard
-                userId={user?.id}
-                interviewId={"dummy1"}
-                role={"Frontend Developer"}
-                type={"Technical"}
-                techstack={["React", "TypeScript", "CSS"]}
-                createdAt={Date.now()}
-              />
-              <InterviewCard
-                userId={user?.id}
-                interviewId={"dummy2"}
-                role={"Backend Developer"}
-                type={"Technical"}
-                techstack={["Node.js", "Express", "MongoDB"]}
-                createdAt={Date.now()}
-              />
-            </>
+            <p>You haven&apos;t taken any interviews yet</p>
           )}
         </div>
       </section>
@@ -100,24 +83,7 @@ async function Home() {
               />
             ))
           ) : (
-            <>
-              <InterviewCard
-                userId={user?.id}
-                interviewId={"dummy3"}
-                role={"Full Stack Engineer"}
-                type={"Mixed"}
-                techstack={["React", "Node.js", "GraphQL"]}
-                createdAt={Date.now()}
-              />
-              <InterviewCard
-                userId={user?.id}
-                interviewId={"dummy4"}
-                role={"DevOps Engineer"}
-                type={"Behavioral"}
-                techstack={["AWS", "Docker", "Kubernetes"]}
-                createdAt={Date.now()}
-              />
-            </>
+            <p>There are no interviews available</p>
           )}
         </div>
       </section>
